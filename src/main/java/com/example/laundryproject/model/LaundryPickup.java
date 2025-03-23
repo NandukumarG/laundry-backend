@@ -52,6 +52,8 @@ public class LaundryPickup {
 
     // Order ID that can be generated and shown to the customer
     private String orderId;
+
+    private String status = "placed";
 }
 
 @Component

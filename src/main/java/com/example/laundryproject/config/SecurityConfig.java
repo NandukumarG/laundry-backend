@@ -20,7 +20,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.disable())  // Disable CORS (or configure it properly)
                 .csrf(csrf -> csrf.disable())  // Disable CSRF (for API-based authentication)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/register", "/api/users/login").permitAll() // Allow registration and login
+                        .requestMatchers("/api/users/**").permitAll() // Allow registration and login
                         .requestMatchers("/api/pickups/**").permitAll()
                         .anyRequest().authenticated() // Secure all other endpoints
                 )
