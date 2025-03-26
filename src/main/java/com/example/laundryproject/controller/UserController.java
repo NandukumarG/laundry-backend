@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -131,7 +132,7 @@ public class UserController {
             logger.info("Username from principal: {}", username);
 
             // Fetch user profile
-            UserDto userProfile = userService.getUserProfile(username);
+            UserRequest userProfile = userService.getUserProfile(username);
 
             if (userProfile == null) {
                 logger.warn("No user profile found for username: {}", username);
