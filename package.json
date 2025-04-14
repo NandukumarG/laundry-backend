@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "gradle": "^1.2.4",
+    "wrapper": "^0.1.0"
+  }
+}
