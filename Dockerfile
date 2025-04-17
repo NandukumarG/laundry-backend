@@ -1,12 +1,13 @@
-# Use a Maven image to build the app
-FROM maven:3.8.5-openjdk-17 AS build
-WORKDIR /app
-COPY . .
-RUN mvn clean install -DskipTests
+FROM maven:3-eclipse-temurin-17 AS build
 
-# Use a lightweight JDK image to run the app
-FROM openjdk:17-slim
-WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+COPY . .
+
+RUN wvn clean package -DskipTests
+
+FROM eclipse-temurin:17-alpine
+
+COPY --from-build/target/*.jar demo.jar
+
 EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+
+ENTRYPOINT ["java","-jar", "demo.jar"]
